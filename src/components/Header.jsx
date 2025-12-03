@@ -6,7 +6,7 @@ return ( <header className="bg-blue-700 text-white shadow-md fixed w-full z-50">
 {/* Logo / Brand */} <Link to="/" className="text-2xl font-bold">
 Mintirho </Link>
 
-```
+
     {/* Navigation */}
     <nav className="hidden md:flex space-x-6 text-lg font-medium">
       <Link to="/about" className="hover:text-yellow-400 transition duration-300">About</Link>

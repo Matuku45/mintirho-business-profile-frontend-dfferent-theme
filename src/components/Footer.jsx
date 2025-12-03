@@ -4,7 +4,7 @@ import { FaFacebook, FaLinkedin, FaInstagram, FaEnvelope, FaPhone } from "react-
 const Footer = () => {
 return ( <footer className="bg-blue-800 text-white py-12 mt-12"> <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
 
-```
+
     {/* Company Info */}
     <div>
       <h2 className="text-2xl font-bold mb-4">Mintirho Business Enterprises</h2>

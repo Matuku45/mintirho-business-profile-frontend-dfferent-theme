@@ -1,9 +1,6 @@
 import React from "react";
-import { MdLocationOn, MdPhone, MdFax, MdBusiness } from "react-icons/md";
+import { MdLocationOn, MdPhone, MdEmail, MdFax, MdBusiness } from "react-icons/md";
 import { TbBuildingFactory } from "react-icons/tb";
-import { FaEnvelope } from "react-icons/fa";
-import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
 
 const offices = [
   {
@@ -48,139 +45,97 @@ const companyInfo = [
 
 const Contact = () => {
   return (
-    <main className="relative min-h-screen bg-gray-900 text-gray-100 px-6 py-20 overflow-hidden">
-      {/* Moving Stars / Particle Background */}
-      <Particles
-        options={{
-          fpsLimit: 60,
-          particles: {
-            number: { value: 80 },
-            size: { value: 2 },
-            color: { value: "#facc15" },
-            move: { enable: true, speed: 0.6, outModes: { default: "out" } },
-            opacity: { value: 0.8 },
-          },
-          interactivity: {
-            events: { onHover: { enable: true, mode: "repulse" } },
-          },
-        }}
-        className="absolute inset-0 -z-10"
-      />
-
-      <div className="max-w-6xl mx-auto text-center relative z-10">
-        <motion.h1
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-5xl md:text-6xl font-extrabold mb-6 text-yellow-400"
-        >
+    <main className="min-h-screen bg-gray-50 px-6 py-20">
+      <div className="max-w-5xl mx-auto text-center">
+        <h1 className="text-5xl font-bold mb-6 text-gray-800 animate-fadeIn">
           Contact Us
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="text-lg md:text-xl mb-16 text-gray-200"
-        >
+        </h1>
+        <p className="text-lg text-gray-600 mb-16 animate-fadeIn delay-100">
           Reach out to Mintirho Business Enterprises for inquiries, quotes, or project collaborations. Our team is ready to assist you across South Africa.
-        </motion.p>
+        </p>
 
         {/* Offices Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {offices.map((office, idx) => (
-            <motion.div
+            <div
               key={idx}
-              whileHover={{ scale: 1.05 }}
-              className="p-1 rounded-3xl bg-gradient-to-r from-blue-400 via-yellow-400 to-pink-500 animate-gradient-x"
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-blue-500 animate-gradient-x"
             >
-              <div className="bg-gray-800 rounded-2xl p-6 shadow-2xl text-left">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2 text-yellow-400">
-                  <TbBuildingFactory className="text-3xl" /> {office.name}
-                </h3>
-                <p className="flex items-center gap-2 mb-2">
-                  <MdLocationOn className="text-blue-400" /> {office.address}
+              <h3 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
+                <TbBuildingFactory className="text-3xl" /> {office.name}
+              </h3>
+              <p className="flex items-center gap-2 text-gray-700 mb-2">
+                <MdLocationOn className="text-blue-500" /> {office.address}
+              </p>
+              <p className="flex items-center gap-2 text-gray-700 mb-2">
+                <MdPhone className="text-blue-500" /> {office.tel}
+              </p>
+              {office.cell && (
+                <p className="flex items-center gap-2 text-gray-700 mb-2">
+                  <MdPhone className="text-blue-500" /> {office.cell}
                 </p>
-                <p className="flex items-center gap-2 mb-2">
-                  <MdPhone className="text-green-400" /> {office.tel}
-                </p>
-                {office.cell && (
-                  <p className="flex items-center gap-2 mb-2">
-                    <MdPhone className="text-green-400" /> {office.cell}
-                  </p>
-                )}
-                <p className="flex items-center gap-2">
-                  <MdFax className="text-red-400" /> {office.fax}
-                </p>
-              </div>
-            </motion.div>
+              )}
+              <p className="flex items-center gap-2 text-gray-700">
+                <MdFax className="text-blue-500" /> {office.fax}
+              </p>
+            </div>
           ))}
         </div>
 
         {/* Company Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="bg-gradient-to-r from-blue-400 via-pink-500 to-yellow-400 animate-gradient-x rounded-3xl p-1 mb-16"
-        >
-          <div className="bg-gray-800 rounded-2xl p-8 shadow-2xl">
-            <h2 className="text-3xl font-bold mb-6 text-yellow-400 flex items-center justify-center gap-2">
-              <MdBusiness /> Company Details
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-200">
-              {companyInfo.map((info, idx) => (
-                <div key={idx} className="flex gap-2 items-center">
-                  {info.icon && <span className="text-blue-400">{info.icon}</span>}
-                  <span className="font-semibold">{info.label}:</span>
-                  <span>{info.value}</span>
-                </div>
-              ))}
-            </div>
+        <div className="bg-white p-8 rounded-2xl shadow-xl animate-gradient-x">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800 flex items-center justify-center gap-2">
+            <MdBusiness /> Company Details
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+            {companyInfo.map((info, idx) => (
+              <div key={idx} className="flex gap-2 items-center">
+                {info.icon && <span className="text-blue-500">{info.icon}</span>}
+                <span className="font-semibold">{info.label}:</span>
+                <span>{info.value}</span>
+              </div>
+            ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Contact Form */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          <form className="bg-gray-800 shadow-2xl rounded-3xl p-8 max-w-xl mx-auto">
-            <h3 className="text-2xl font-bold text-yellow-400 mb-6 text-center">
+        <div className="mt-16">
+          <form className="bg-white shadow-md rounded-2xl p-8 max-w-xl mx-auto animate-fadeIn delay-200">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
               Send Us a Message
             </h3>
             <div className="mb-4">
-              <label className="block text-gray-200 font-semibold mb-2">Name</label>
+              <label className="block text-gray-700 font-semibold mb-2">Name</label>
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-200 font-semibold mb-2">Email</label>
+              <label className="block text-gray-700 font-semibold mb-2">Email</label>
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-200 font-semibold mb-2">Message</label>
+              <label className="block text-gray-700 font-semibold mb-2">Message</label>
               <textarea
                 rows="5"
                 placeholder="Your Message"
-                className="w-full px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
               ></textarea>
             </div>
             <button
               type="submit"
-              className="w-full bg-yellow-400 text-gray-900 py-3 rounded-lg font-bold hover:bg-yellow-500 transition duration-300"
+              className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition duration-300"
             >
               Send Message
             </button>
           </form>
-        </motion.div>
+        </div>
       </div>
     </main>
   );

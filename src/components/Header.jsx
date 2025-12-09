@@ -52,7 +52,7 @@ const Header = () => {
         <nav className="hidden md:flex space-x-6 text-lg font-medium">
           <Link to="/company-profile" className="hover:text-[#FF6B6B] transition duration-300">Company Profile</Link>
           <Link to="/products-services" className="hover:text-[#F06529] transition duration-300">Products and Services</Link>
-          <Link to="/project" className="hover:text-[#563D7C] transition duration-300">Projects</Link>
+          <Link to="/projects" className="hover:text-[#563D7C] transition duration-300">Projects</Link>
           <Link to="/management" className="hover:text-[#00BFFF] transition duration-300">Management</Link>
           <Link to="/gallery" className="hover:text-[#007ACC] transition duration-300">Gallery</Link>
           <Link to="/equipment" className="hover:text-[#4CAF50] transition duration-300">Equipment</Link>

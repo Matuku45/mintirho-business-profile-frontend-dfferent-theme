@@ -4,68 +4,93 @@ import Logo from "../assets/image.png";
 
 const Header = () => {
   return (
-    <header className="bg-blue-700 text-white shadow-md fixed w-full z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <header className="fixed w-full z-50">
+      <div
+        className="
+          backdrop-blur-lg
+          bg-gradient-to-r from-slate-900/90 via-slate-800/80 to-slate-900/90
+          shadow-xl border-b border-white/10
+        "
+      >
+        <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
 
-        {/* Logo / Brand */}
-        <Link to="/" className="flex items-center space-x-3 group relative">
-          
-          {/* Gradient Glow Behind Logo */}
-          <div className="
-            absolute 
-            inset-0 
-            rounded-full 
-            blur-xl 
-            bg-gradient-to-r 
-            from-yellow-400 
-            to-blue-500 
-            opacity-40 
-            group-hover:opacity-70 
-            transition 
-            duration-700
-          "></div>
+          {/* Logo + Brand */}
+          <Link to="/" className="flex items-center gap-3 group relative">
 
-          {/* Floating Logo */}
-          <img 
-            src={Logo}
-            alt="Mintirho Logo"
-            className="
-              relative 
-              h-12 
-              w-auto 
-              object-contain 
-              animate-float 
-              group-hover:scale-110 
-              transition-transform 
-              duration-500 
-              ease-out
-            "
-          />
+            {/* Soft Neon Glow */}
+            <div
+              className="
+                absolute inset-0 rounded-full blur-2xl 
+                bg-gradient-to-r from-purple-500 to-cyan-400
+                opacity-30 group-hover:opacity-60
+                transition-all duration-700
+              "
+            ></div>
 
-          <span className="text-2xl font-bold tracking-wide">
-            MINTIRHO
-          </span>
-        </Link>
+            {/* Floating Logo */}
+            <img
+              src={Logo}
+              alt="Mintirho Logo"
+              className="
+                relative h-12 w-auto object-contain 
+                transition-all duration-500 ease-out
+                group-hover:scale-110 group-hover:rotate-3
+              "
+            />
 
-        {/* Navigation */}
-        <nav className="hidden md:flex space-x-6 text-lg font-medium">
-          <Link to="/company-profile" className="hover:text-yellow-400 transition duration-300">Company Profile</Link>
-          <Link to="/products-services" className="hover:text-yellow-400 transition duration-300">Products and services</Link>
-          <Link to="/project" className="hover:text-yellow-400 transition duration-300">Projects</Link>
-          <Link to="/management" className="hover:text-yellow-400 transition duration-300">Management</Link>
-          <Link to="/gallery" className="hover:text-yellow-400 transition duration-300">Gallery</Link>
-          <Link to="/equipment" className="hover:text-yellow-400 transition duration-300">Equipment</Link>
-          <Link to="/about" className="hover:text-yellow-400 transition duration-300">About Us</Link>
-          <Link to="/contact" className="hover:text-yellow-400 transition duration-300">Contact</Link>
-        </nav>
+            <span className="text-2xl font-semibold tracking-wide text-white">
+              MINTIRHO
+            </span>
+          </Link>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
-          <button className="focus:outline-none">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8 text-lg font-medium text-gray-200">
+            {[
+              ["Company Profile", "/company-profile"],
+              ["Products & Services", "/products-services"],
+              ["Projects", "/projects"],
+              ["Management", "/management"],
+              ["Gallery", "/gallery"],
+              ["Equipment", "/equipment"],
+              ["About Us", "/about"],
+              ["Contact", "/contact"],
+            ].map(([label, path]) => (
+              <Link
+                key={label}
+                to={path}
+                className="
+                  relative transition duration-300 
+                  hover:text-white
+                  after:content-[''] after:absolute after:-bottom-1 after:left-0 
+                  after:h-[2px] after:w-0 after:bg-cyan-400 
+                  after:transition-all after:duration-300 
+                  hover:after:w-full
+                "
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile Menu - Nice Glow */}
+          <div className="md:hidden">
+            <button className="text-white p-2 rounded-lg bg-white/10 backdrop-blur-md hover:bg-white/20 transition">
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+
         </div>
       </div>
     </header>
